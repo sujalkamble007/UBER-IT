@@ -1,4 +1,4 @@
-#Backend API Documentation
+# Backend API Documentation
 
 ## /user/register
 
@@ -145,5 +145,87 @@ Example:
 ```json
 {
   "message": "Invalid Email or Password"
+}
+```
+
+## /user/profile
+
+This endpoint is responsible for retrieving the profile of the authenticated user.
+
+## Method
+GET
+
+## Headers
+- `Authorization`: Bearer token for authenticating the user.
+
+Example:
+```
+Authorization: Bearer <token>
+```
+
+## Response
+
+### Success (200 OK)
+Returns a JSON object containing the authenticated user's profile.
+
+Example:
+```json
+{
+  "user": {
+    "_id": "64f0c7a2e5a7b2b3c8d9e0a1",
+    "fullName": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john@example.com",
+    "__v": 0
+  }
+}
+```
+
+### Error (401 Unauthorized)
+Returns a JSON object with a message if the user is not authenticated.
+
+Example:
+```json
+{
+  "message": "Unauthorized"
+}
+```
+
+## /users/logout
+
+This endpoint is responsible for logging out the authenticated user.
+
+## Method
+GET
+
+## Headers
+- `Authorization`: Bearer token for authenticating the user.
+
+Example:
+```
+Authorization: Bearer <token>
+```
+
+## Response
+
+### Success (200 OK)
+Returns a JSON object with a message indicating the user has been logged out.
+
+Example:
+```json
+{
+  "message": "Logged Out"
+}
+```
+
+### Error (401 Unauthorized)
+Returns a JSON object with a message if the user is not authenticated.
+
+Example:
+```json
+{
+  "message": "Unauthorized"
 }
 ```

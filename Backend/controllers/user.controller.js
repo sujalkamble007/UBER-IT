@@ -1,6 +1,7 @@
 const userModel = require('../models/user.model');
 const userService = require('../services/user.service'); // Corrected typo from 'userSevice' to 'userService'
 const { validationResult } = require('express-validator');
+const blacklistTokenModel = require('../models/blacklistToken.model');
 
 module.exports.registerUser = async (req, res, next) => {
     const errors = validationResult(req);
@@ -45,6 +46,22 @@ module.exports.loginUser = async (req, res, next) => {
         return res.status(401).json({ message: 'Invalid Email or Password' });
     }
     const token = user.generateAuthToken();
-    
+
+    res.cookie('token', token,);
+
     res.status(200).json({ token, user });
+}
+
+module.exports.getuserProfile = async (req, res, next) => {
+    if (!req.user) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+    res.status(200).json({ user: req.user });
+}
+
+module.exports.logoutUser = async (req, res, next) => {
+    res.clearCookie('token');
+    const token = req.cookies.token || req.headers.authorization.split(' ')[1];
+    await userService.blacklistToken(token);
+    res.status(200).json({ message: 'Logged Out' });
 }
