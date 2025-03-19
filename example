@@ -1,0 +1,22 @@
+// Captian register token
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RiMTllNDc1ODU5ZmIxZjllZjA2MjciLCJpYXQiOjE3NDI0MTIyNjAsImV4cCI6MTc0MjQ5ODY2MH0.QCe_2eBhZza6jv5DUwSb6PeBssWAcDCD0jYzbBnAOqA",
+    "captain": {
+        "fullname": {
+            "firstname": "test_captain_firstname",
+            "lastname": "test-captain_lastname"
+        },
+        "email": "test_email@gmail.com",
+        "password": "$2b$10$eCrBl040yW3InZl5wXXzpeFWh.Orjwfl0X.Bre1S8YX/Cpkzi9Thy",
+        "socketId": null,
+        "status": "inactive",
+        "vehicle": {
+            "color": "yellow",
+            "plate": "MH 14 KY 4334",
+            "capacity": 4,
+            "vehicleType": "car"
+        },
+        "_id": "67db19e475859fb1f9ef0627",
+        "__v": 0
+    }
+}
